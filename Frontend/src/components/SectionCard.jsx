@@ -29,7 +29,7 @@ function SectionCard({ icon: Icon, title, content, iconColor, className = '' }) 
           )}
         </button>
       </div>
-      <div className="p-4 bg-slate-50 border border-slate-200 rounded-md">
+      <div className="p-6 bg-slate-50 border border-slate-200 rounded-md  text-left leading-relaxed">
         <p className="text-slate-700 whitespace-pre-wrap">{content}</p>
       </div>
     </div>

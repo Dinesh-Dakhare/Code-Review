@@ -5,6 +5,8 @@ import SectionCard from './SectionCard'
 function ReviewOutput({ data }) {
   const [showRaw, setShowRaw] = useState(false)
   const { parsed, raw, usedModel, attempts } = data
+console.log("parsed data",parsed);
+console.log("raw data",raw);
 
   return (
     <div className="space-y-4">
@@ -23,17 +25,17 @@ function ReviewOutput({ data }) {
           icon={CheckCircle2}
           title="Summary"
           iconColor="text-blue-600"
-          content={parsed.summary}
+          content={parsed?.summary}
         />
 
-        {parsed.issues && parsed.issues.length > 0 && (
+        {parsed?.issues && parsed?.issues?.length > 0 && (
           <div className="mt-4">
             <div className="flex items-center gap-2 mb-3">
               <AlertTriangle className="w-5 h-5 text-amber-600" />
               <h3 className="text-lg font-semibold text-slate-800">Issues Found</h3>
             </div>
             <div className="space-y-2">
-              {parsed.issues.map((issue, index) => (
+              {parsed?.issues.map((issue, index) => (
                 <div
                   key={index}
                   className="p-3 bg-amber-50 border border-amber-200 rounded-md"
@@ -45,24 +47,24 @@ function ReviewOutput({ data }) {
           </div>
         )}
 
-        {parsed.suggestions && (
+        {parsed?.suggestions && (
           <SectionCard
             icon={Lightbulb}
             title="Suggestions"
             iconColor="text-green-600"
-            content={parsed.suggestions}
+            content={parsed?.suggestions}
             className="mt-4"
           />
         )}
 
-        {parsed.refactoredCode && (
+        {parsed?.refactoredCode && (
           <div className="mt-4">
             <div className="flex items-center gap-2 mb-3">
               <Code className="w-5 h-5 text-indigo-600" />
               <h3 className="text-lg font-semibold text-slate-800">Refactored Code</h3>
             </div>
             <pre className="p-4 bg-slate-900 text-slate-100 rounded-md overflow-x-auto">
-              <code>{parsed.refactoredCode}</code>
+              <code>{parsed?.refactoredCode}</code>
             </pre>
           </div>
         )}
@@ -76,7 +78,7 @@ function ReviewOutput({ data }) {
             <span className="font-medium">Raw Output</span>
           </button>
           {showRaw && (
-            <pre className="mt-3 p-4 bg-slate-50 border border-slate-200 rounded-md overflow-x-auto text-sm text-slate-700">
+            <pre className="mt-3 p-4 bg-slate-50 border border-slate-200 rounded-md overflow-auto text-sm text-slate-700 text-left leading-relaxed">
               {raw}
             </pre>
           )}

@@ -20,6 +20,7 @@ function App() {
 
     try {
       const data = await reviewCode(filename, code)
+      console.log("👍frontend get data",data)
       setReviewData(data)
     } catch (err) {
       if (err.response?.status === 503) {
@@ -32,7 +33,7 @@ function App() {
     }
   }
   return (
-   <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+   <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 w-full">
       <div className="container mx-auto px-4 py-8">
         <header className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-2">
